@@ -1,0 +1,26 @@
+{
+	"variables": {
+		"aws_access_key": "XXXXXXXXXXXX",
+		"aws_secret_key": "XXXXXXXXXX/XXXXXXXXXXX"
+	},
+
+	"provisioners": [{
+		"type": "shell",
+		"script": "script.sh"
+  	}],
+
+	"builders": [{
+	"type": "amazon-ebs",
+	"ssh_pty": "true",
+	"access_key": "{{user `aws_access_key`}}",
+	"secret_key": "{{user `aws_secret_key`}}",
+	"source_ami": "ami-0e74bb6e",
+	"instance_type": "t2.micro",
+	"ssh_username": "ec2-user",
+	"ami_name": "Redhat_Golden_Image",
+	"region": "us-west-2",
+	"vpc_id": "vpc-de7621ba",
+	"subnet_id": "subnet-e8591d8c",
+	"associate_public_ip_address": true
+	}]
+} 
